@@ -1,6 +1,6 @@
 <?php
 
-namespace Microweber\Encontrar;
+namespace Microweber\Encontrar\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +12,6 @@ class MCategory extends Model
 
     public function children()
     {
-        return $this->hasMany('App\Models\Category', 'parent');
+        return $this->hasMany('Microweber\Encontrar\Models\MCategory', 'parent');
     }
 }

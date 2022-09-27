@@ -21,7 +21,7 @@ $config['tables'] = function () {
         Schema::create('enc_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
-            $table->integer('parent')->unsigned();
+            $table->integer('parent')->nullable();
             $table->integer('type')->unsigned(); // 1 (Area tematica), 2 (problemas)
             $table->integer('position')->unsigned();
             $table->integer('status')->default(1);

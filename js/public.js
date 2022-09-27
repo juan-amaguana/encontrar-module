@@ -8,18 +8,18 @@ const app = createApp({
         { id: 2, title: "Problemas", icon: moduleUrl + "/img/problemas.png" },
         { id: 3, title: "Acceso geográfico", icon: moduleUrl + "/img/maps.png" },
       ],
-      categories: [],
+      categoriesFilter: [],
     };
   },
   methods: {
     getCategories() {
       var self = this;
 
-      const url = apiUrl + "get_enc_categories";
+      const url = apiUrl + "get_enc_filter_categories";
       var get = $.get(url);
       get.done(function (data) {
-        self.categories = data;
-        console.log(self.categories);
+        console.log(data);
+        self.categoriesFilter = data;
       });
     },
   },

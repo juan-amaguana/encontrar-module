@@ -4,8 +4,8 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 </script>
 
 
-<div class="row" id="app">
-    <div v-for="type in types" class="col-md">
+<div class="row" id="app" style="padding-right: 10%; padding-left: 15%">
+    <div v-for="type in types" class="col-md" style="text-align:center;">
         <div class="icon-category">
             <img :src="type.icon" alt="">
         </div>

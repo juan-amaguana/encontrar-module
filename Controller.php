@@ -2,8 +2,10 @@
 namespace Microweber\Encontrar;
 
 require_once('models/MCategory.php');
+require_once('models/MCategoryFilter.php');
 // use App\Models\Category;
 use Microweber\Encontrar\Models\MCategory;
+use Microweber\Encontrar\Models\MCategoryFilter;
 
 class Controller
 {
@@ -30,4 +32,17 @@ class Controller
             return $e->getMessage();
         }
     }
+
+
+    /**
+     * CATEGORIES FILTER
+     */
+    function getCategoriesFilter(){
+ 
+        $categories = MCategoryFilter::with('childrenRecursive')->whereNull('parent')->get();
+        // return compact('categories');
+        return $categories;
+    }
+
+     
 }

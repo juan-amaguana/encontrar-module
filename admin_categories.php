@@ -2,11 +2,19 @@
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item" v-if="categories.length > 0" v-for="category in categories">
-    <h2 class="accordion-header" :id="'heading'+ category.id">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse'+ category.id" aria-expanded="true" :aria-controls="'collapse'+ category.id">
-        {{category.name}}  <span class="badge bg-primary">Editar</span>
-      </button>
-    </h2>
+    
+    <div class="row accordion-header" :id="'heading'+ category.id">
+
+        <div class="col-md-6">
+          <h3>{{category.name}}</h3>
+        </div>
+        <div class="col-md-6">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse'+ category.id" aria-expanded="true" :aria-controls="'collapse'+ category.id">
+          </button>
+        </div>
+
+    </div>
+
     <div :id="'collapse'+ category.id" class="accordion-collapse collapse" :aria-labelledby="'heading'+ category.id" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <table class="table">

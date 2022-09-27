@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-md-12">
-        <button v-on:click="addCategory()" type="button" class="btn btn-primary">Agregar categoria padre</button>
+        <button v-on:click="addCategory()" type="button" class="btn btn-primary btn-sm btn-icon px-3">Agregar categoria
+            padre
+        </button>
     </div>
 </div>
 <br>
@@ -24,7 +26,7 @@
         <div :id="'collapse'+ category.id" class="accordion-collapse collapse" :aria-labelledby="'heading'+ category.id"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <table class="table">
+                <table class="table" v-if="category.children && category.children.length > 0">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -48,6 +50,10 @@
                         </tr>
                     </tbody>
                 </table>
+                <br>
+                <div style="text-align: center;">
+                    <a v-on:click="addSubCategory(category)" href="#">Agregar subcategoria</a>
+                </div>
             </div>
         </div>
     </div>
@@ -64,7 +70,7 @@
             </div>
 
             <div class="modal-body">
-                <select v-model="type" class="form-select" aria-label="Default select example">
+                <select v-if="!parent" v-model="type" class="form-select" aria-label="Default select example">
                     <option v-for="type in types" :value="type.id">{{type.title}}</option>
                 </select>
                 <br>

@@ -20,7 +20,7 @@ class Controller
         try {
             $categoria = new MCategory();
             $categoria->name = $request["name"];
-            $categoria->parent = null;
+            $categoria->parent = isset($request["parent"]) ? $request["parent"]: null;
             $categoria->type = $request["type"];
             $categoria->position = $request["position"];
             $categoria->status = 1;

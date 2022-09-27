@@ -15,6 +15,7 @@ const app = createApp({
         error: "",
       },
       // form items
+      parent: null,
       type: 0, // defaul
       title: null,
       position: null,
@@ -32,7 +33,16 @@ const app = createApp({
       });
     },
     addCategory() {
+      this.parent = null;
       this.modalOptions.title = "Crear categoria padre";
+      var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+      myModal.show();
+    },
+    addSubCategory(parentCategory) {
+      this.modalOptions.title = "Crear categoria hija";
+      this.type = parentCategory.type;
+      this.parent = parentCategory.id;
+
       var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
       myModal.show();
     },
@@ -45,6 +55,11 @@ const app = createApp({
       try {
         const url = apiUrl + "save_enc_categories";
         const form = {};
+
+        if (this.parent) {
+          form.parent = this.parent;
+        }
+
         form.name = this.title;
         form.position = this.position;
         form.type = this.type;

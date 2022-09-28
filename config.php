@@ -36,7 +36,7 @@ $config['tables'] = function () {
         Schema::create('enc_countries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
-            $table->string('detail', 100);
+            $table->string('detail', 100)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });
@@ -58,16 +58,9 @@ $config['tables'] = function () {
     if (!Schema::hasTable('enc_items')) {
         Schema::create('enc_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 100);
+            $table->string('title', 200);
             $table->longText('abstract');
-            $table->json('indicators');
-            $table->json('context');
-            $table->json('geographical_context');
-            $table->json('practices');
-            $table->json('challenges');
-            $table->json('investments');
-            $table->json('sources');
-            $table->json('contacts');
+            $table->json('gallery')->nullable();
             $table->integer('status')->default(1);
             $table->integer('country_id')->unsigned();
             $table->timestamps();
@@ -76,14 +69,27 @@ $config['tables'] = function () {
         });
     }
 
-    if (!Schema::hasTable('ecn_item_categories')) {
-        Schema::create('ecn_item_categories', function (Blueprint $table) {
+    if (!Schema::hasTable('ecn_items_categories')) {
+        Schema::create('ecn_items_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('item_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->timestamps();
             $table->foreign('item_id')->references('id')->on('enc_items');
             $table->foreign('category_id')->references('id')->on('enc_categories');
+        });
+    }
+
+    if (!Schema::hasTable('enc_items_detail')) {
+        Schema::create('enc_items_detail', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('item_id')->unsigned();
+            $table->string('header', 100);
+            $table->longText('description')->nullable();
+            $table->json('items')->nullable();
+            $table->integer('status')->default(1);
+            $table->timestamps();
+            $table->foreign('item_id')->references('id')->on('enc_items');
         });
     }
 };

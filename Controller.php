@@ -4,10 +4,16 @@ namespace Microweber\Encontrar;
 require_once('models/MCategory.php');
 require_once('models/MCountry.php');
 require_once('models/MCategoryFilter.php');
+require_once('models/MItem.php');
+require_once('models/MItemsCategory.php');
+require_once('models/MItemsDetail.php');
 // use App\Models\Category;
 use Microweber\Encontrar\Models\MCategory;
 use Microweber\Encontrar\Models\MCountry;
 use Microweber\Encontrar\Models\MCategoryFilter;
+use Microweber\Encontrar\Models\MItem;
+use Microweber\Encontrar\Models\MItemsCategory;
+use Microweber\Encontrar\Models\MItemsDetail;
 
 class Controller
 {

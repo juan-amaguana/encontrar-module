@@ -7,6 +7,7 @@ const app = createApp({
         type: moduleUrl + "/img/type.png",
         right: moduleUrl + "/img/tright.png",
         left: moduleUrl + "/img/tleft.png",
+        defaultCard: moduleUrl + "/img/default-card.png",
       },
       types: [
         { id: 1, title: "Área temática", icon: moduleUrl + "/img/tematica.png", active: 0 },
@@ -41,7 +42,10 @@ const app = createApp({
       this.categories = await this.getRequest("get_enc_categories");
     },
     async getItems() {
-      this.items = await this.getRequest("get_enc_items");
+      const form = {
+        viewcard: 1,
+      };
+      this.items = await this.postRequest("get_enc_items", form);
     },
     async getRequest(method) {
       try {
@@ -49,7 +53,20 @@ const app = createApp({
         var get = $.get(url);
         const result = await get.done(function (data) {
           console.log(`Result ${method}:`, data);
-          self.countries = data;
+        });
+        return result;
+      } catch (error) {
+        return {
+          error: err.message,
+        };
+      }
+    },
+    async postRequest(method, form) {
+      try {
+        const url = apiUrl + method;
+        var post = $.post(url, form);
+        const result = await post.done(function (data) {
+          console.log(`Result ${method}:`, data);
         });
         return result;
       } catch (error) {

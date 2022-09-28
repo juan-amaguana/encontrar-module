@@ -87,6 +87,7 @@ $config['tables'] = function () {
             $table->string('header', 100);
             $table->longText('description')->nullable();
             $table->json('items')->nullable();
+            $table->integer('viewcard')->default(0);
             $table->integer('status')->default(1);
             $table->timestamps();
             $table->foreign('item_id')->references('id')->on('enc_items');

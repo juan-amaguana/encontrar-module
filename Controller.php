@@ -78,7 +78,13 @@ class Controller
         ->with(array('categories' => function ($query) {
             $query->with('category');
         }))
-        ->with('details');
+        //->with('details')
+        ->with(array('details' => function ($query) {
+            if (isset($request["viewcard"])){
+                $query->where('viewcard', 1);
+            }
+        }))
+        ->with('country');
 
         if (isset($request["country_id"])){
             $items->where("country_id", $request["country_id"]);

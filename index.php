@@ -83,6 +83,38 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
             </div>
         </div>
     </div>
+
+
+    <!-- RESULT FILTERS  -->
+    <div v-if="items && items.length > 0" class="row ecn_content_cards">
+        <div v-for="item in items" class="col-md-3 ">
+            <div class="row g-0 ecn_content_item">
+                <div class="col-md-12 ecn_card_img">
+                    <img :src="defaultIcons.defaultCard" alt="">
+                    <div class="">
+                        {{item.country.name}}
+                    </div>
+                </div>
+                <div class="col-md-12 p-3 ecn_card_title">
+                    {{item.title}}
+                </div>
+                <div v-if="item.details" v-for="detail in item.details" v-if="detail.viewcard"
+                    :class="detail.viewcard ? 'col-md-12 p-3 ecn_card_adddres' : ''">
+                    {{ detail.viewcard ? detail.items.items[0].description : '' }}
+                </div>
+                <div class="col-md-12 p-3 ecn_card_problem">
+                    <strong>Problemas que atiende</strong><br>
+                    Enfrentar la mayor
+                    incidencia y aparición
+                    de plagas y
+                    enfermedades
+                </div>
+                <div class="col-md-12 p-3 ecn_card_date">
+                    {{item.created_at}}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -153,6 +185,57 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 .ecn_space {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+/* CARDS */
+.ecn_content_cards {
+    padding: 2% 15% 5% 15%
+}
+
+.ecn_card_img {
+    position: relative;
+}
+
+.ecn_card_img div {
+    position: absolute;
+    background-color: #c1502ac9;
+    color: #fff;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    bottom: 0;
+}
+
+.ecn_content_item {
+    border: 1px solid #B4B4B4;
+    margin-top: 5%;
+}
+
+.ecn_card_title {
+    background: #FCFCFC;
+    font-size: 1.3rem;
+    text-align: center;
+
+}
+
+.ecn_card_adddres {
+    background: #E6E9F0;
+    text-align: justify;
+
+}
+
+.ecn_card_problem {
+    background: #FFF7E8;
+    text-align: justify;
+
+}
+
+.ecn_card_date {
+    background: #FCFCFC;
+    text-align: right;
+
 }
 </style>
 

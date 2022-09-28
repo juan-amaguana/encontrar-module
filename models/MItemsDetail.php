@@ -10,6 +10,10 @@ class MItemsDetail extends Model
     protected $table = 'enc_items_detail';
     use HasFactory;
 
+    protected $casts = [
+        'items' => 'array'
+    ];
+
     public function item()
     {
         return $this->belongsTo('Microweber\Encontrar\Models\MItem', 'item_id');

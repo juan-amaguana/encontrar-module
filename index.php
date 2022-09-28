@@ -215,15 +215,14 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 
 .ecn_card_title {
     background: #FCFCFC;
-    font-size: 1.3rem;
+    font-size: 20px;
     text-align: center;
 
 }
 
 .ecn_card_adddres {
     background: #E6E9F0;
-    text-align: justify;
-
+    font-size: 16px;
 }
 
 .ecn_card_problem {

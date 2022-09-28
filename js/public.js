@@ -7,7 +7,7 @@ const app = createApp({
         type: moduleUrl + "/img/type.png",
         right: moduleUrl + "/img/tright.png",
         left: moduleUrl + "/img/tleft.png",
-        defaultCard: moduleUrl + "/img/default-card.png",
+        defaultCard: moduleUrl + "/img/default-card.jpg",
       },
       types: [
         { id: 1, title: "Área temática", icon: moduleUrl + "/img/tematica.png", active: 0 },

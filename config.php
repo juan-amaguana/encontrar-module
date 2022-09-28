@@ -21,6 +21,7 @@ $config['tables'] = function () {
         Schema::create('enc_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
+            $table->string('color', 10);
             $table->integer('parent')->nullable();
             $table->integer('type')->unsigned(); // 1 (Area tematica), 2 (problemas)
             $table->integer('position')->unsigned();
@@ -67,9 +68,11 @@ $config['tables'] = function () {
             $table->json('investments');
             $table->json('sources');
             $table->json('contacts');
-            $table->integer('status')->default(1);;
+            $table->integer('status')->default(1);
+            $table->integer('country_id')->unsigned();
             $table->timestamps();
             $table->index('title');
+            $table->foreign('country_id')->references('id')->on('enc_countries');
         });
     }
 
@@ -77,10 +80,10 @@ $config['tables'] = function () {
         Schema::create('ecn_item_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('item_id')->unsigned();
-            $table->integer('category_filter_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->timestamps();
             $table->foreign('item_id')->references('id')->on('enc_items');
-            $table->foreign('category_filter_id')->references('id')->on('ecn_category_filters');
+            $table->foreign('category_id')->references('id')->on('enc_categories');
         });
     }
 };

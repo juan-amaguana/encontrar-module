@@ -39,3 +39,14 @@ function get_enc_filter_categories($params=array())
     $controller = new Microweber\Encontrar\Controller();
     return response()->json($controller->getCategoriesFilter());
 }
+
+
+/**
+ * ITEMS
+ */
+api_expose('get_enc_items');
+function get_enc_items($params=array())
+{
+    $controller = new Microweber\Encontrar\Controller();
+    return response()->json($controller->getItems($params));
+}

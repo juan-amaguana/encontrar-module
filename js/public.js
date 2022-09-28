@@ -17,6 +17,7 @@ const app = createApp({
       categories: [],
       countries: [],
       categoriesFilter: [],
+      items: [],
     };
   },
   methods: {
@@ -39,6 +40,9 @@ const app = createApp({
     async getCategories() {
       this.categories = await this.getRequest("get_enc_categories");
     },
+    async getItems() {
+      this.items = await this.getRequest("get_enc_items");
+    },
     async getRequest(method) {
       try {
         const url = apiUrl + method;
@@ -59,6 +63,7 @@ const app = createApp({
     this.getCategories();
     this.getCountries();
     this.getCategoriesFilter();
+    this.getItems();
   },
 });
 

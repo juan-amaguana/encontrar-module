@@ -17,6 +17,11 @@ class MItem extends Model
 
     public function details()
     {
-        return $this->hasMany("Microweber\Encontrar\Models\MItemsDetail");
+        return $this->hasMany("Microweber\Encontrar\Models\MItemsDetail", "item_id");
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(MItemsCategory::class, "item_id");
     }
 }

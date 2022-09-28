@@ -15,6 +15,8 @@ use Microweber\Encontrar\Models\MItem;
 use Microweber\Encontrar\Models\MItemsCategory;
 use Microweber\Encontrar\Models\MItemsDetail;
 
+use Illuminate\Database\Eloquent\Builder;
+
 class Controller
 {
     function getAllCategories() {
@@ -62,5 +64,27 @@ class Controller
         return $categories;
     }
 
+
+    /**
+     * ITEMS
+     */
+    function getItems($request){
+   
+        $items = MItem::whereHas('categories', function (Builder $query) {
+            $query->whereHas('category', function (Builder $query2) {
+                $query2->where('status', 1);
+            });
+        })
+        ->with(array('categories' => function ($query) {
+            $query->with('category');
+        }))
+        ->with('details');
+
+        if (isset($request["country_id"])){
+            $items->where("country_id", $request["country_id"]);
+        }
+
+        return $items->get();
+    }
      
 }

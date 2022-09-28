@@ -22,6 +22,19 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
     </div>
 
 
+    <div v-if="!typeActive" class="row ecn_experiences">
+        <div class="col-md-12 enc_exp_title">
+            <img :src="defaultIcons.left" alt=""> Experiencias <img :src="defaultIcons.right" alt="">
+        </div>
+
+        <div class="col-md-12 enc_exp_text">
+            Recuerde que puede AportAR a este repositorio con sus propias experiencias. Si considera que tiene una
+            experiencia sistematizada o por sistematizar,  ingrese aquí al formulario para AportAR con su
+            Experiencia.
+        </div>
+    </div>
+
+
     <div v-if="typeActive && typeActive.id == 1" class="row g-0 ecn_content_filters">
         <div v-for="category in categories" class="col-md">
             <div class="ecn_category_header" :style="{background: category.color}">
@@ -102,6 +115,27 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 
 .ecn_ct_active .footer-category {
     background: #F7941D !important;
+}
+
+/* DIV STATIC */
+.ecn_experiences {
+    padding: 5% 15% 5% 15%;
+    text-align: center;
+}
+
+.enc_exp_title {
+    /*font-family: 'Montserrat';*/
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 46px;
+    color: #C1502A;
+}
+
+.enc_exp_text {
+    margin-top: 3%;
+    font-size: 1.3rem;
+    color: #777777;
 }
 
 /* FILTERS */

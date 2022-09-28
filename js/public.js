@@ -5,6 +5,8 @@ const app = createApp({
     return {
       defaultIcons: {
         type: moduleUrl + "/img/type.png",
+        right: moduleUrl + "/img/tright.png",
+        left: moduleUrl + "/img/tleft.png",
       },
       types: [
         { id: 1, title: "Área temática", icon: moduleUrl + "/img/tematica.png", active: 0 },

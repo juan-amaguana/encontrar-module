@@ -7,7 +7,7 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 <div id="app">
     <div class="row ecn_content_types" style="padding-right: 15%; padding-left: 15%">
         <div v-for="type in types" class="col-md" style="text-align:center;">
-            <div class="ecn_ct_inactive">
+            <div :class=" type.active ? 'ecn_ct_active': 'ecn_ct_inactive'" v-on:click="selectType(type)">
                 <div class="icon-category">
                     <img :src="type.icon" alt="">
                 </div>
@@ -22,7 +22,7 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
     </div>
 
 
-    <div class="row g-0 ecn_content_filters" style="padding-right: 5%; padding-left: 5%">
+    <div v-if="typeActive && typeActive.id == 1" class="row g-0 ecn_content_filters">
         <div v-for="category in categories" class="col-md">
             <div class="ecn_category_header" :style="{background: category.color}">
                 {{ category.name}}
@@ -53,6 +53,23 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
             </div>
         </div>
     </div>
+
+    <div v-if="typeActive && typeActive.id == 2" class="row g-0 ecn_content_filters">
+        <div class="row">
+            <div class="col-md">
+                No disponible
+            </div>
+        </div>
+    </div>
+
+    <div v-if="typeActive && typeActive.id == 3" class="row g-0 ecn_content_filters"
+        style="padding-right: 5%; padding-left: 5%">
+        <div class="row">
+            <div class="col-md">
+                No disponible
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -79,9 +96,18 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
     border: 2px solid #3F4C5D;
 }
 
+.ecn_ct_active {
+    border: 2px solid #F7941D;
+}
+
+.ecn_ct_active .footer-category {
+    background: #F7941D !important;
+}
+
+/* FILTERS */
 .ecn_content_filters {
     background: #FFEFDC;
-    padding-top: 3%;
+    padding: 3% 5% 5% 5%
 }
 
 .ecn_category_header {

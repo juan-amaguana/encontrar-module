@@ -11,12 +11,23 @@ const app = createApp({
         { id: 2, title: "Problemas", icon: moduleUrl + "/img/problemas.png", active: 0 },
         { id: 3, title: "Acceso geográfico", icon: moduleUrl + "/img/maps.png", active: 0 },
       ],
+      typeActive: null,
       categories: [],
       countries: [],
       categoriesFilter: [],
     };
   },
   methods: {
+    selectType(typeSelected) {
+      for (const type of this.types) {
+        if (typeSelected.id == type.id) {
+          type.active = 1;
+          this.typeActive = type;
+        } else {
+          type.active = 0;
+        }
+      }
+    },
     async getCategoriesFilter() {
       this.categoriesFilter = await this.getRequest("get_enc_filter_categories");
     },

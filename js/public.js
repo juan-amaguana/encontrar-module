@@ -8,23 +8,41 @@ const app = createApp({
         { id: 2, title: "Problemas", icon: moduleUrl + "/img/problemas.png" },
         { id: 3, title: "Acceso geográfico", icon: moduleUrl + "/img/maps.png" },
       ],
+      categories: [],
+      countries: [],
       categoriesFilter: [],
     };
   },
   methods: {
-    getCategories() {
-      var self = this;
-
-      const url = apiUrl + "get_enc_filter_categories";
-      var get = $.get(url);
-      get.done(function (data) {
-        console.log(data);
-        self.categoriesFilter = data;
-      });
+    async getCategoriesFilter() {
+      this.categoriesFilter = await this.getRequest("get_enc_filter_categories");
+    },
+    async getCountries() {
+      this.countries = await this.getRequest("get_enc_countries");
+    },
+    async getCategories() {
+      this.categories = await this.getRequest("get_enc_categories");
+    },
+    async getRequest(method) {
+      try {
+        const url = apiUrl + method;
+        var get = $.get(url);
+        const result = await get.done(function (data) {
+          console.log(`Result ${method}:`, data);
+          self.countries = data;
+        });
+        return result;
+      } catch (error) {
+        return {
+          error: err.message,
+        };
+      }
     },
   },
   mounted() {
     this.getCategories();
+    this.getCountries();
+    this.getCategoriesFilter();
   },
 });
 

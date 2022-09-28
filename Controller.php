@@ -2,9 +2,11 @@
 namespace Microweber\Encontrar;
 
 require_once('models/MCategory.php');
+require_once('models/MCountry.php');
 require_once('models/MCategoryFilter.php');
 // use App\Models\Category;
 use Microweber\Encontrar\Models\MCategory;
+use Microweber\Encontrar\Models\MCountry;
 use Microweber\Encontrar\Models\MCategoryFilter;
 
 class Controller
@@ -31,6 +33,16 @@ class Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    /**
+     * COUNTRIES
+     */
+    function getCountries(){
+ 
+        $categories = MCountry::get();
+        // return compact('categories');
+        return $categories;
     }
 
 

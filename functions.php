@@ -19,6 +19,15 @@ function save_enc_categories($params=array())
     return response()->json($controller->saveParentCategory($params));
 }
 
+/**
+ * COUNTRIES
+ */
+api_expose('get_enc_countries');
+function get_enc_countries($params=array())
+{
+    $controller = new Microweber\Encontrar\Controller();
+    return response()->json($controller->getCountries($params));
+}
 
 
 /**

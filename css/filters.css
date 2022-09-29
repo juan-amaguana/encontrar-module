@@ -1,0 +1,114 @@
+.ecn_content_types .icon-category {
+  margin-top: 25px;
+}
+
+.ecn_content_types .ecn_description {
+  margin-top: 15px;
+  padding: 0px 10px 0px 10px;
+  font-size: 1.3rem;
+}
+
+.ecn_content_types .footer-category {
+  margin-top: 25px;
+  padding: 15px 0px 15px 0px;
+  font-size: 2rem;
+  background: #3f4c5d;
+  color: #fff;
+}
+
+.ecn_ct_inactive {
+  border: 2px solid #3f4c5d;
+}
+
+.ecn_ct_active {
+  border: 2px solid #f7941d;
+}
+
+.ecn_ct_active .footer-category {
+  background: #f7941d !important;
+}
+
+/* DIV STATIC */
+.ecn_experiences {
+  padding: 5% 15% 5% 15%;
+  text-align: center;
+}
+
+.enc_exp_title {
+  /*font-family: 'Montserrat';*/
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 46px;
+  color: #c1502a;
+}
+
+.enc_exp_text {
+  margin-top: 3%;
+  font-size: 1.3rem;
+  color: #777777;
+}
+
+/* FILTERS */
+.ecn_content_filters {
+  background: #ffefdc;
+  padding: 3% 5% 5% 5%;
+}
+
+.ecn_category_header {
+  color: #fff;
+  font-size: 1rem;
+  padding: 15px 10px 15px 10px;
+}
+
+.ecn_space {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* CARDS */
+.ecn_content_cards {
+  padding: 2% 10% 5% 10%;
+}
+
+.ecn_card_img {
+  position: relative;
+}
+
+.ecn_card_img div {
+  position: absolute;
+  background-color: #c1502ac9;
+  color: #fff;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  bottom: 0;
+}
+
+.ecn_card {
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.ecn_card_title {
+  background: #fcfcfc;
+  font-size: 20px;
+  text-align: center;
+}
+
+.ecn_card_adddres {
+  background: #e6e9f0;
+  font-size: 16px;
+}
+
+.ecn_card_problem {
+  background: #fff7e8;
+  text-align: justify;
+}
+
+.ecn_card_date {
+  background: #fcfcfc;
+  text-align: right;
+}

@@ -46,7 +46,9 @@ const app = createApp({
         viewcard: 1,
       };
       const result = await this.postRequest("get_enc_items", form);
+      // transform data
       for (const item of result) {
+        item.created_at = moment(item.created_at).format("MMMM , YYYY");
         for (const detail of item.details) {
           if (detail.type === "geographical_context") {
             //show in card;

@@ -54,13 +54,16 @@
   background: #ffefdc;
   padding: 3% 5% 5% 5%;
 }
-
 .ecn_category_header {
   color: #fff;
   font-size: 1rem;
-  padding: 15px 10px 15px 10px;
 }
-
+.ecn_content_filters .accordion-button {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #777777;
+  background: #ffff;
+}
 .ecn_space {
   margin-top: 10px;
   margin-bottom: 10px;

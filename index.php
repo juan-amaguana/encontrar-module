@@ -42,7 +42,7 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
     <!-- FILTERS -->
     <div v-if="typeActive && typeActive.id == 1" class="row g-0 ecn_content_filters">
         <div v-for="category in categories" class="col-md">
-            <div class="ecn_category_header" :style="{background: category.color}">
+            <div class="ecn_category_header p-3" :style="{background: category.color}">
                 {{ category.name}}
             </div>
             <div class="accordion" :id="'accordion'+ category.id">
@@ -56,7 +56,7 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
                     </h2>
                     <div :id="'collapse'+ category.id" class="accordion-collapse collapse show"
                         :aria-labelledby="'heading'+ category.id" :data-bs-parent="'#accordion'+ category.id">
-                        <div class="accordion-body">
+                        <div class="accordion-body overflow-auto" style="max-height: 350px;">
                             <div v-for="children in category.children" class="row g-1 ecn_space">
                                 <div v-if="category.isCountry" class="col-md-1">
                                     <input class="form-check-input me-1" type="checkbox" v-model="children.checked"

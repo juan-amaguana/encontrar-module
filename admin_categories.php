@@ -42,7 +42,7 @@
                             <th scope="row">{{children.id}}</th>
                             <td>{{children.name}}</td>
                             <td> {{category.name}}</td>
-                            <td>0</td>
+                            <td>{{children.position}}</td>
                             <td>
                                 <span class="badge bg-primary" v-on:click="editCategory(children)">Editar</span>
                                 <span class="badge bg-danger">Eliminar</span>

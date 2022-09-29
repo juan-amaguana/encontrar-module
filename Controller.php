@@ -24,7 +24,7 @@ class Controller
     }
 
     function getTreeCategories(){
-        return MCategory::with('children')->whereNull('parent')->get();
+        return MCategory::with('children')->whereNull('parent')->orderBy('position')->get();
     }
 
     public function saveParentCategory($request)

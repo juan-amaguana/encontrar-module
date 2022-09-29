@@ -55,7 +55,7 @@ const app = createApp({
     },
     async getCategories() {
       this.categories = await this.getRequest("get_enc_categories");
-      this.categories.unshift(this.countriesFilter);
+      // this.categories.unshift(this.countriesFilter);
       // add checked status
       for (const category of this.categories) {
         for (const children of category.children) {

@@ -45,7 +45,23 @@ const app = createApp({
       const form = {
         viewcard: 1,
       };
-      this.items = await this.postRequest("get_enc_items", form);
+      const result = await this.postRequest("get_enc_items", form);
+      for (const item of result) {
+        for (const detail of item.details) {
+          if (detail.type === "geographical_context") {
+            //show in card;
+            let foundAddress = await detail.items.sub_items.find((_item) => {
+              if (_item.viewcard && _item.viewcard == 1) {
+                return _item;
+              }
+            });
+            item.addressCard = foundAddress;
+            console.log("result:", foundAddress);
+          }
+        }
+      }
+      console.log("Final items:", result);
+      this.items = result;
     },
     async getRequest(method) {
       try {

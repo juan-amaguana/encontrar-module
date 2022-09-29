@@ -98,9 +98,8 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
                 <div class="col-md-12 p-3 ecn_card_title">
                     {{item.title}}
                 </div>
-                <div v-if="item.details" v-for="detail in item.details" v-if="detail.viewcard"
-                    :class="detail.viewcard ? 'col-md-12 p-3 ecn_card_adddres' : ''">
-                    {{ detail.viewcard ? detail.items.items[0].description : '' }}
+                <div v-if="item.addressCard" class="col-md-12 p-3 ecn_card_adddres">
+                    {{ item.addressCard.description }}
                 </div>
                 <div class="col-md-12 p-3 ecn_card_problem">
                     <strong>Problemas que atiende</strong><br>

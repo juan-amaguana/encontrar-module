@@ -89,7 +89,9 @@ $config['tables'] = function () {
             $table->json('items')->nullable();
             $table->string('type', 50); // indicators, context, geographical_context, practices, challenges, investments, sources, contacts
             $table->integer('status')->default(1);
+            $table->integer('position')->unsigned();
             $table->timestamps();
+            $table->index('type');
             $table->foreign('item_id')->references('id')->on('enc_items');
         });
     }

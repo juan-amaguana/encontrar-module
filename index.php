@@ -3,12 +3,12 @@ var apiUrl = "<?php print api_url(); ?>";
 var moduleUrl = "<?php print $config['url_to_module']; ?>";
 </script>
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 <div id="app">
     <!-- TABS -->
     <div class="row ecn_content_types" style="padding-right: 15%; padding-left: 15%">
-        <div v-for="type in types" class="col-md" style="text-align:center;">
+        <div v-for="type in types" class="col-md-4" style="text-align:center;">
             <div :class=" type.active ? 'ecn_ct_active': 'ecn_ct_inactive'" v-on:click="selectType(type)">
                 <div class="icon-category">
                     <img :src="type.icon" alt="">
@@ -99,32 +99,36 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 
     <!-- RESULT FILTERS  -->
     <div v-if="items && items.length > 0" class="row ecn_content_cards" data-masonry='{"percentPosition": true }'>
-        <div v-for="item in items" class="col-md-3">
-            <div class="card ecn_card">
-                <div class="ecn_card_img">
-                    <img :src="defaultIcons.defaultCard" alt="">
-                    <div>
-                        {{item.country.name}}
+        <transition-group name="slide-fade" appear>
+
+            <div v-for="item in items" class="col-md-3">
+                <div class="card ecn_card animate__animated animate__fadeInUp">
+                    <div class="ecn_card_img">
+                        <img :src="defaultIcons.defaultCard" alt="">
+                        <div>
+                            {{item.country.name}}
+                        </div>
+                    </div>
+                    <div class="p-3 ecn_card_title">
+                        {{item.title}}
+                    </div>
+                    <div v-if="item.addressCard" class="p-3 ecn_card_adddres">
+                        {{ item.addressCard.description }}
+                    </div>
+                    <div class="p-3 ecn_card_problem">
+                        <strong>Problemas que atiende</strong><br>
+                        Enfrentar la mayor
+                        incidencia y aparición
+                        de plagas y
+                        enfermedades
+                    </div>
+                    <div class="p-3 ecn_card_date">
+                        {{item.created_at}}
                     </div>
                 </div>
-                <div class="p-3 ecn_card_title">
-                    {{item.title}}
-                </div>
-                <div v-if="item.addressCard" class="p-3 ecn_card_adddres">
-                    {{ item.addressCard.description }}
-                </div>
-                <div class="p-3 ecn_card_problem">
-                    <strong>Problemas que atiende</strong><br>
-                    Enfrentar la mayor
-                    incidencia y aparición
-                    de plagas y
-                    enfermedades
-                </div>
-                <div class="p-3 ecn_card_date">
-                    {{item.created_at}}
-                </div>
             </div>
-        </div>
+
+        </transition-group>
     </div>
 </div>
 

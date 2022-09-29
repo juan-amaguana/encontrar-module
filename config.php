@@ -7,7 +7,7 @@ $config['name'] = "Encontrar Web Module";
 $config['link'] = "https://github.com/";
 $config['description'] = "The best module ever!";
 $config['author'] = "Juan Amaguaña";
-$config['ui'] = false; //you can drop this module in live edit
+$config['ui'] = true; //you can drop this module in live edit
 $config['ui_admin_iframe'] = true;
 $config['ui_admin'] = true; //your module is visible in the admin
 

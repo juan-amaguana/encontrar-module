@@ -21,7 +21,7 @@ const app = createApp({
       items: [],
       formFilter: {
         country_ids: [],
-        category_id: [],
+        category_ids: [],
       },
     };
   },
@@ -90,6 +90,15 @@ const app = createApp({
           this.formFilter.country_ids.push(children.id);
         } else {
           this.formFilter.country_ids = this.arrayRemove(this.formFilter.country_ids, children.id);
+        }
+      } else {
+        if (children.checked) {
+          this.formFilter.category_ids.push(children.id);
+        } else {
+          this.formFilter.category_ids = this.arrayRemove(
+            this.formFilter.category_ids,
+            children.id
+          );
         }
       }
       console.log("El formulario:", this.formFilter);

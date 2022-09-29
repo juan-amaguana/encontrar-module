@@ -70,7 +70,10 @@ class Controller
      */
     function getItems($request){ //$items = DB::table('items')->whereIn('id', [1, 2, 3])->get();
    
-        $items = MItem::whereHas('categories', function (Builder $query) {
+        $items = MItem::whereHas('categories', function (Builder $query) use ($request){
+            if (isset($request["category_ids"])){
+                $query->whereIn("category_id", $request["category_ids"]);
+            }
             $query->whereHas('category', function (Builder $query2) {
                 $query2->where('status', 1);
             });

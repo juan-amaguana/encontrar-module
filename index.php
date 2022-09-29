@@ -6,6 +6,7 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 
 
 <div id="app">
+    <!-- TABS -->
     <div class="row ecn_content_types" style="padding-right: 15%; padding-left: 15%">
         <div v-for="type in types" class="col-md" style="text-align:center;">
             <div :class=" type.active ? 'ecn_ct_active': 'ecn_ct_inactive'" v-on:click="selectType(type)">
@@ -21,8 +22,10 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
             </div>
         </div>
     </div>
+    <!-- TABS -->
 
 
+    <!-- STATIC SECTION -->
     <div v-if="!typeActive" class="row ecn_experiences">
         <div class="col-md-12 enc_exp_title">
             <img :src="defaultIcons.left" alt=""> Experiencias <img :src="defaultIcons.right" alt="">
@@ -34,8 +37,9 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
             Experiencia.
         </div>
     </div>
+    <!-- STATIC SECTION -->
 
-
+    <!-- FILTERS -->
     <div v-if="typeActive && typeActive.id == 1" class="row g-0 ecn_content_filters">
         <div v-for="category in categories" class="col-md">
             <div class="ecn_category_header" :style="{background: category.color}">
@@ -54,8 +58,13 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
                         :aria-labelledby="'heading'+ category.id" :data-bs-parent="'#accordion'+ category.id">
                         <div class="accordion-body">
                             <div v-for="children in category.children" class="row g-1 ecn_space">
-                                <div class="col-md-1">
-                                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                <div v-if="category.isCountry" class="col-md-1">
+                                    <input class="form-check-input me-1" type="checkbox" v-model="children.checked"
+                                        @change="filterItems($event,children,true)" aria-label="">
+                                </div>
+                                <div v-if="!category.isCountry" class="col-md-1">
+                                    <input class="form-check-input me-1" type="checkbox" v-model="children.checked"
+                                        @change="filterItems($event,children,false)" aria-label="">
                                 </div>
                                 <div class="col-md-11">
                                     {{children.name}}
@@ -67,7 +76,9 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
             </div>
         </div>
     </div>
+    <!-- END FILTERS -->
 
+    <!-- OTHER RESULTS -->
     <div v-if="typeActive && typeActive.id == 2" class="row g-0 ecn_content_filters">
         <div class="row">
             <div class="col-md">

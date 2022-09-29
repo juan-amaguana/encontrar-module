@@ -16,10 +16,13 @@ const app = createApp({
       ],
       typeActive: null,
       categories: [],
-      countries: [],
       countriesFilter: [],
       categoriesFilter: [],
       items: [],
+      formFilter: {
+        country_ids: [],
+        category_id: [],
+      },
     };
   },
   methods: {
@@ -42,22 +45,25 @@ const app = createApp({
         name: "País",
         color: "#C1502A",
         position: 1,
+        isCountry: true,
         children: [],
       };
       const result = await this.getRequest("get_enc_countries");
       for (const country of result) {
         this.countriesFilter.children.push(country);
       }
-      this.countrie = result;
     },
     async getCategories() {
       this.categories = await this.getRequest("get_enc_categories");
       this.categories.unshift(this.countriesFilter);
+      // add checked status
+      for (const category of this.categories) {
+        for (const children of category.children) {
+          children.checked = false;
+        }
+      }
     },
-    async getItems() {
-      const form = {
-        viewcard: 1,
-      };
+    async getItems(form = {}) {
       const result = await this.postRequest("get_enc_items", form);
       // transform data
       for (const item of result) {
@@ -71,12 +77,28 @@ const app = createApp({
               }
             });
             item.addressCard = foundAddress;
-            console.log("result:", foundAddress);
+            // console.log("result:", foundAddress);
           }
         }
       }
-      console.log("Final items:", result);
+      // console.log("Final items:", result);
       this.items = result;
+    },
+    async filterItems(event, children, isCountry) {
+      if (isCountry) {
+        if (children.checked) {
+          this.formFilter.country_ids.push(children.id);
+        } else {
+          this.formFilter.country_ids = this.arrayRemove(this.formFilter.country_ids, children.id);
+        }
+      }
+      console.log("El formulario:", this.formFilter);
+      await this.getItems(this.formFilter);
+    },
+    arrayRemove(arr, value) {
+      return arr.filter(function (ele) {
+        return ele != value;
+      });
     },
     async getRequest(method) {
       try {
@@ -108,8 +130,8 @@ const app = createApp({
     },
   },
   mounted() {
-    this.getCategories();
     this.getCountries();
+    this.getCategories();
     this.getCategoriesFilter();
     this.getItems();
   },

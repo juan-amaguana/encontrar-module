@@ -68,7 +68,7 @@ class Controller
     /**
      * ITEMS
      */
-    function getItems($request){
+    function getItems($request){ //$items = DB::table('items')->whereIn('id', [1, 2, 3])->get();
    
         $items = MItem::whereHas('categories', function (Builder $query) {
             $query->whereHas('category', function (Builder $query2) {
@@ -78,16 +78,15 @@ class Controller
         ->with(array('categories' => function ($query) {
             $query->with('category');
         }))
-        //->with('details')
         ->with(array('details' => function ($query) {
-            if (isset($request["viewcard"])){
+            /*if (isset($request["viewcard"])){
                 $query->where('viewcard', 1);
-            }
+            }*/
         }))
         ->with('country');
 
-        if (isset($request["country_id"])){
-            $items->where("country_id", $request["country_id"]);
+        if (isset($request["country_ids"])){
+            $items->whereIn("country_id", $request["country_ids"]);
         }
 
         return $items->get();

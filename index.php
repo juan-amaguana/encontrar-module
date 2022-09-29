@@ -51,7 +51,7 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
                         </button>
                     </h2>
                     <div :id="'collapse'+ category.id" class="accordion-collapse collapse show"
-                        :aria-labelledby="'heading'+ category.id" data-bs-parent="'#accordion'+ category.id">
+                        :aria-labelledby="'heading'+ category.id" :data-bs-parent="'#accordion'+ category.id">
                         <div class="accordion-body">
                             <div v-for="children in category.children" class="row g-1 ecn_space">
                                 <div class="col-md-1">
@@ -87,8 +87,8 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 
 
     <!-- RESULT FILTERS  -->
-    <div v-if="items && items.length > 0" class="row ecn_content_cards">
-        <div v-for="item in items" class="col-md-3 ">
+    <div v-if="items && items.length > 0" class="row ecn_content_cards" data-masonry='{"percentPosition": true }'>
+        <div v-for="item in items" class="col-md-3">
             <div class="card ecn_card">
                 <div class="ecn_card_img">
                     <img :src="defaultIcons.defaultCard" alt="">
@@ -118,10 +118,6 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 </div>
 
 
-
-<script async defer src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <link rel="stylesheet" href="<?php print $config['url_to_module']; ?>/css/filters.css">
 <script type="module" src="<?php print $config['url_to_module']; ?>/js/public.js"></script>
-<!-- Masonry scripts-->
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>

@@ -17,6 +17,7 @@ const app = createApp({
       typeActive: null,
       categories: [],
       countries: [],
+      countriesFilter: [],
       categoriesFilter: [],
       items: [],
     };
@@ -36,10 +37,22 @@ const app = createApp({
       this.categoriesFilter = await this.getRequest("get_enc_filter_categories");
     },
     async getCountries() {
-      this.countries = await this.getRequest("get_enc_countries");
+      this.countriesFilter = {
+        id: 0,
+        name: "País",
+        color: "#C1502A",
+        position: 1,
+        children: [],
+      };
+      const result = await this.getRequest("get_enc_countries");
+      for (const country of result) {
+        this.countriesFilter.children.push(country);
+      }
+      this.countrie = result;
     },
     async getCategories() {
       this.categories = await this.getRequest("get_enc_categories");
+      this.categories.unshift(this.countriesFilter);
     },
     async getItems() {
       const form = {

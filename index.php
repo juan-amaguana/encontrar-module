@@ -4,6 +4,7 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 </script>
 
 
+
 <div id="app">
     <div class="row ecn_content_types" style="padding-right: 15%; padding-left: 15%">
         <div v-for="type in types" class="col-md" style="text-align:center;">
@@ -88,27 +89,27 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
     <!-- RESULT FILTERS  -->
     <div v-if="items && items.length > 0" class="row ecn_content_cards">
         <div v-for="item in items" class="col-md-3 ">
-            <div class="row g-0 ecn_content_item">
-                <div class="col-md-12 ecn_card_img">
+            <div class="card ecn_card">
+                <div class="ecn_card_img">
                     <img :src="defaultIcons.defaultCard" alt="">
-                    <div class="">
+                    <div>
                         {{item.country.name}}
                     </div>
                 </div>
-                <div class="col-md-12 p-3 ecn_card_title">
+                <div class="p-3 ecn_card_title">
                     {{item.title}}
                 </div>
-                <div v-if="item.addressCard" class="col-md-12 p-3 ecn_card_adddres">
+                <div v-if="item.addressCard" class="p-3 ecn_card_adddres">
                     {{ item.addressCard.description }}
                 </div>
-                <div class="col-md-12 p-3 ecn_card_problem">
+                <div class="p-3 ecn_card_problem">
                     <strong>Problemas que atiende</strong><br>
                     Enfrentar la mayor
                     incidencia y aparición
                     de plagas y
                     enfermedades
                 </div>
-                <div class="col-md-12 p-3 ecn_card_date">
+                <div class="p-3 ecn_card_date">
                     {{item.created_at}}
                 </div>
             </div>
@@ -188,7 +189,7 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 
 /* CARDS */
 .ecn_content_cards {
-    padding: 2% 15% 5% 15%
+    padding: 2% 10% 5% 10%
 }
 
 .ecn_card_img {
@@ -207,8 +208,8 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
     bottom: 0;
 }
 
-.ecn_content_item {
-    border: 1px solid #B4B4B4;
+.ecn_card {
+    margin-bottom: 5%;
     margin-top: 5%;
 }
 
@@ -238,3 +239,5 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
 </style>
 
 <script type="module" src="<?php print $config['url_to_module']; ?>/js/public.js"></script>
+<!-- Masonry scripts-->
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>

@@ -109,7 +109,7 @@ const app = createApp({
       console.log("El formulario:", this.formFilter);
       await this.getItems(this.formFilter);
     },
-    async validateExistence(categoryIds) {
+    async validateExistence(categoryIds, viewall = false) {
       for (const category of this.categories) {
         for (const children of category.children) {
           if (categoryIds.length > 0) {
@@ -118,6 +118,12 @@ const app = createApp({
               children.disabled = true;
             }
           } else {
+            if (viewall) {
+              // clear all filters
+              children.checked = false;
+              this.formFilter.category_ids = [];
+              this.getItems();
+            }
             children.disabled = false;
           }
         }

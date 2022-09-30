@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="col-me-12 mt-5 text-center">
-            <button class="ecn_button_all">VER TODAS LAS FICHAS</button>
+            <button v-on:click="validateExistence([], true)" class="ecn_button_all">VER TODAS LAS FICHAS</button>
         </div>
     </div>
     <!-- END FILTERS -->

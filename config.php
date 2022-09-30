@@ -23,6 +23,7 @@ $config['tables'] = function () {
         Schema::create('enc_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
+            $table->longText('description');
             $table->string('color', 10);
             $table->integer('parent')->nullable();
             $table->integer('type')->unsigned(); // 1 (Area tematica), 2 (problemas)

@@ -1,0 +1,50 @@
+.enc-detail-top {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 16px;
+}
+.enc-detail-top .ecn-social {
+  background-color: #d7e2e5;
+}
+.enc-detail-top .ecn-social img {
+  padding: 0px 10px 0px 10px;
+}
+.enc-detail-top .ecn-views {
+  background: #c1cccf;
+}
+.enc-detail-top .ecn-views img {
+  padding: 0px 10px 0px 10px;
+}
+/* COLAPSE OPTIONS */
+.ecn_collapse_head p {
+  color: #fff;
+  font-size: 20px;
+}
+.ecn_collapse_head i {
+  color: #fff;
+  font-size: 30px;
+}
+.ecn_collapse_body h1 {
+  font-size: 35px;
+}
+.ecn_list_categories li {
+  border-right: 10px solid #fb835b;
+  background: #f8fdff !important;
+}
+.ecn_list_categories li strong:after {
+  content: "\a";
+  white-space: pre;
+}
+.ecn_item_description p {
+  column-count: 2;
+  font-size: 15px;
+}
+.ecn_list_items_title {
+  color: #6a6d75;
+  font-size: 25px;
+}
+.ecn_list_items {
+  border-left: 10px solid;
+  background-color: #eff6f8;
+  font-size: 15px;
+}

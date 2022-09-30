@@ -71,6 +71,13 @@
 .disabled_checkbox {
   color: rgba(0, 0, 0, 0.4);
 }
+.ecn_cat_description {
+  font-size: 12px;
+  color: rgb(50 50 50 / 80%);
+}
+.disabled_checkbox .ecn_cat_description {
+  color: rgba(0, 0, 0, 0.4);
+}
 
 /* CARDS */
 .ecn_content_cards {

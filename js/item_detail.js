@@ -8,7 +8,13 @@ const app = createApp({
   },
   methods: {
     async itemById(id) {
-      this.detail = await this.getRequest("get_enc_items_by_id?itemId=" + id);
+      const result = await this.getRequest("get_enc_items_by_id?itemId=" + id);
+      if (result.details && result.details.length > 0) {
+        result.details = result.details.sort(function (a, b) {
+          return a.position - b.position;
+        });
+      }
+      this.detail = result;
     },
     async getRequest(method) {
       try {

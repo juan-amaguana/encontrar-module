@@ -63,6 +63,8 @@
                                 </div>
                                 <div class="col-md-11">
                                     {{children.name}}
+                                    <div v-if="children.description" class="ecn_cat_description">
+                                        {{ children.description}}</div>
                                 </div>
                             </div>
                         </div>

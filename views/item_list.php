@@ -124,6 +124,7 @@
                     <div class="p-3 ecn_card_date">
                         {{item.created_at}}
                     </div>
+                    <a :href="'/details?itemId='+item.id" class="stretched-link"></a>
                 </div>
             </div>
 

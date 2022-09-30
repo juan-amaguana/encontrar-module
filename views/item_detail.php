@@ -1,16 +1,20 @@
-hola aqui va el detalle
 <?php
 // <module type="encontrar" is-detail="true"  />
 $urlModule = $config['url_to_module'];
 
 if (isset($_GET['itemId']) && $_GET['itemId'] !== ""){
-    echo $_GET['itemId'];
 ?>
 <script>
 var itemId = "<?php print $_GET['itemId']; ?>";
 console.log("ver detalle del id:", itemId);
 </script>
 <?php
+} else {
+?>
+<script>
+var itemId = 1;
+</script>
+<?php    
 }
 ?>
 <div id="app">

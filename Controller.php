@@ -92,7 +92,20 @@ class Controller
             $items->whereIn("country_id", $request["country_ids"]);
         }
 
-        return $items->get();
+        // search existences
+        $itemIds = $items->pluck('id')->toArray();
+        $data = [];
+
+        if (isset($request["category_ids"])){
+            $data = MItemsCategory::whereIn("item_id", $itemIds)->groupBy('category_id')->pluck('category_id')->toArray();
+        }
+
+        $result = [
+            "validCategoryIds" => $data,
+            "items" => $items->get()
+        ];
+
+        return  $result;
     }
      
 }

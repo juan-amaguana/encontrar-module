@@ -68,6 +68,9 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.disabled_checkbox {
+  color: rgba(0, 0, 0, 0.4);
+}
 
 /* CARDS */
 .ecn_content_cards {

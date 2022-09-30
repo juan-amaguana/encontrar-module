@@ -57,13 +57,15 @@ var moduleUrl = "<?php print $config['url_to_module']; ?>";
                     <div :id="'collapse'+ category.id" class="accordion-collapse collapse show"
                         :aria-labelledby="'heading'+ category.id" :data-bs-parent="'#accordion'+ category.id">
                         <div class="accordion-body overflow-auto" style="max-height: 350px;">
-                            <div v-for="children in category.children" class="row g-1 ecn_space">
+                            <div v-for="children in category.children" class="row g-1 ecn_space"
+                                :class="children.disabled ? 'disabled_checkbox': ''">
                                 <div v-if="category.isCountry" class="col-md-1">
                                     <input class="form-check-input me-1" type="checkbox" v-model="children.checked"
                                         @change="filterItems($event,children,true)" aria-label="">
                                 </div>
                                 <div v-if="!category.isCountry" class="col-md-1">
                                     <input class="form-check-input me-1" type="checkbox" v-model="children.checked"
+                                        :id="children.id" :disabled="children.disabled ? true: false"
                                         @change="filterItems($event,children,false)" aria-label="">
                                 </div>
                                 <div class="col-md-11">

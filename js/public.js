@@ -60,13 +60,14 @@ const app = createApp({
       for (const category of this.categories) {
         for (const children of category.children) {
           children.checked = false;
+          children.disabled = false;
         }
       }
     },
     async getItems(form = {}) {
       const result = await this.postRequest("get_enc_items", form);
       // transform data
-      for (const item of result) {
+      for (const item of result.items) {
         item.created_at = moment(item.created_at).format("MMMM , YYYY");
         for (const detail of item.details) {
           if (detail.type === "geographical_context") {
@@ -81,16 +82,17 @@ const app = createApp({
           }
         }
       }
-      // console.log("Final items:", result);
-      this.items = result;
+      this.items = result.items;
+      // Validate categories
+      await this.validateExistence(result.validCategoryIds);
     },
     async filterItems(event, children, isCountry) {
       if (isCountry) {
-        if (children.checked) {
+        /*if (children.checked) {
           this.formFilter.country_ids.push(children.id);
         } else {
           this.formFilter.country_ids = this.arrayRemove(this.formFilter.country_ids, children.id);
-        }
+        }*/
       } else {
         if (children.checked) {
           this.formFilter.category_ids.push(children.id);
@@ -101,8 +103,25 @@ const app = createApp({
           );
         }
       }
+
+      if (this.formFilter.category_ids.length === 0) {
+      }
       console.log("El formulario:", this.formFilter);
       await this.getItems(this.formFilter);
+    },
+    async validateExistence(categoryIds) {
+      for (const category of this.categories) {
+        for (const children of category.children) {
+          if (categoryIds.length > 0) {
+            const foundId = await categoryIds.find((id) => id === children.id);
+            if (!foundId) {
+              children.disabled = true;
+            }
+          } else {
+            children.disabled = false;
+          }
+        }
+      }
     },
     arrayRemove(arr, value) {
       return arr.filter(function (ele) {

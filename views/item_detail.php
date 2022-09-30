@@ -72,13 +72,13 @@ console.log("ver detalle del id:", itemId);
                     <p>{{det.header}}</p>
                 </div>
                 <div class="col-md-6 ps-3 pe-3 pt-2 pb-2 text-end">
-                    <div data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
-                        aria-controls="collapseExample">
+                    <div data-bs-toggle="collapse" :data-bs-target="'#collapse'+det.id" aria-expanded="false"
+                        :aria-controls="'collapse'+det.id">
                         <i class="far fa-arrow-alt-circle-up"></i>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 collapse show ecn_collapse_body" id="collapseExample">
+            <div class="col-md-12 collapse show ecn_collapse_body" :id="'collapse'+det.id">
                 <div v-if="det.description" class="row gx-0 mt-4">
                     <div class="col-md-12 ecn_item_description" v-html="det.description">
                     </div>
@@ -101,11 +101,9 @@ console.log("ver detalle del id:", itemId);
         <!-- END ITEMS DINAMIC -->
     </div>
 
-
-    {{ detail}}
 </div>
 
-
+<br>
 
 
 <link rel="stylesheet" href="<?php print $config['url_to_module']; ?>/css/item_detail.css">

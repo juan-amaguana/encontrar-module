@@ -52,7 +52,7 @@
 /* FILTERS */
 .ecn_content_filters {
   background: #ffefdc;
-  padding: 3% 5% 5% 5%;
+  padding: 3% 5% 3% 5%;
 }
 .ecn_category_header {
   color: #fff;
@@ -72,11 +72,19 @@
   color: rgba(0, 0, 0, 0.4);
 }
 .ecn_cat_description {
-  font-size: 12px;
+  font-size: 14px;
   color: rgb(50 50 50 / 80%);
 }
 .disabled_checkbox .ecn_cat_description {
   color: rgba(0, 0, 0, 0.4);
+}
+.ecn_button_all {
+  background: #f97431;
+  color: #fff;
+  padding: 8px 10px 8px 10px;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 18px;
 }
 
 /* CARDS */
@@ -98,6 +106,8 @@
   padding-top: 10px;
   padding-bottom: 10px;
   bottom: 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .ecn_card {
@@ -113,7 +123,12 @@
 
 .ecn_card_adddres {
   background: #e6e9f0;
-  font-size: 16px;
+  font-size: 16px !important;
+  line-height: 1em;
+}
+.ecn_card_adddres p {
+  font-size: 16px !important;
+  line-height: 1em;
 }
 
 .ecn_card_problem {

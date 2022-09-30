@@ -49,7 +49,7 @@
                     </h2>
                     <div :id="'collapse'+ category.id" class="accordion-collapse collapse show"
                         :aria-labelledby="'heading'+ category.id" :data-bs-parent="'#accordion'+ category.id">
-                        <div class="accordion-body overflow-auto" style="max-height: 350px;">
+                        <div class="accordion-body overflow-auto" style="max-height: 260px;">
                             <div v-for="children in category.children" class="row g-1 ecn_space"
                                 :class="children.disabled ? 'disabled_checkbox': ''">
                                 <div v-if="category.isCountry" class="col-md-1">
@@ -71,6 +71,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-me-12 mt-5 text-center">
+            <button class="ecn_button_all">VER TODAS LAS FICHAS</button>
         </div>
     </div>
     <!-- END FILTERS -->
@@ -106,13 +109,12 @@
                             {{item.country.name}}
                         </div>
                     </div>
-                    <div class="p-3 ecn_card_title">
+                    <div class="p-4 ecn_card_title">
                         {{item.title}}
                     </div>
-                    <div v-if="item.addressCard" class="p-3 ecn_card_adddres">
-                        {{ item.addressCard.description }}
+                    <div v-if="item.addressCard" class="p-4 ecn_card_adddres" v-html="item.addressCard.description">
                     </div>
-                    <div class="p-3 ecn_card_problem">
+                    <div class="p-4 ecn_card_problem">
                         <strong>Problemas que atiende</strong><br>
                         Enfrentar la mayor
                         incidencia y aparición

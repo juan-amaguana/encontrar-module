@@ -50,3 +50,11 @@ function get_enc_items($params=array())
     $controller = new Microweber\Encontrar\Controller();
     return response()->json($controller->getItems($params));
 }
+
+api_expose('get_enc_items_by_id');
+function get_enc_items_by_id($params=array())
+{
+    // print_r($params['itemId']) ;
+    $controller = new Microweber\Encontrar\Controller();
+    return response()->json($controller->getItemById($params));
+}

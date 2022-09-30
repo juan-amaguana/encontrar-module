@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MItem extends Model
 {
     protected $table = 'enc_items';
+    protected  $primaryKey = 'id';
     use HasFactory;
 
     public function country()

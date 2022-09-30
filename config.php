@@ -11,10 +11,12 @@ $config['ui'] = true; //you can drop this module in live edit
 $config['ui_admin_iframe'] = true;
 $config['ui_admin'] = true; //your module is visible in the admin
 
-$config['categories'] = "content";
+// $config['categories'] = "content";
 
 $config['position'] = "98";
 $config['version'] = "0.01";
+
+$isDetail = isset($params['is-detail']) ? true : false;
 
 $config['tables'] = function () {
     if (!Schema::hasTable('enc_categories')) {

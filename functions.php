@@ -11,7 +11,19 @@ function get_enc_categories($params=array())
     // return db_get($params);
 }
 
+/**
+ * TYPES
+ */
+api_expose('get_enc_types');
+function get_enc_types($params=array())
+{
+    $controller = new Microweber\Encontrar\Controller();
+    return response()->json($controller->getTypes($params));
+}
 
+/**
+ * CATEGORIES
+ */
 api_expose('save_enc_categories');
 function save_enc_categories($params=array())
 {

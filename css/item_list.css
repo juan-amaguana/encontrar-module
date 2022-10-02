@@ -1,30 +1,48 @@
-.ecn_content_types .icon-category {
+.ecn_content_types .icon-type {
   margin-top: 25px;
+  height: 70px;
+}
+.icon-type svg {
+  fill: red;
 }
 
-.ecn_content_types .ecn_description {
+.ecn_content_types .description-type {
   margin-top: 15px;
   padding: 0px 10px 0px 10px;
-  font-size: 1.3rem;
+  font-size: 16px;
+  line-height: 17px;
+  height: 40px;
+  max-height: 65px;
 }
 
-.ecn_content_types .footer-category {
+.ecn_content_types .footer-type {
   margin-top: 25px;
   padding: 15px 0px 15px 0px;
-  font-size: 2rem;
+  font-size: 22px;
   background: #3f4c5d;
   color: #fff;
+  max-height: 95px;
+}
+
+.content-type {
+  border: 3px solid;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .ecn_ct_inactive {
-  border: 2px solid #3f4c5d;
+  border-color: #3f4c5d;
+}
+.ecn_ct_inactive:hover {
+  border-color: #f7941d;
+  cursor: pointer;
 }
 
 .ecn_ct_active {
-  border: 2px solid #f7941d;
+  border-color: #f7941d;
 }
 
-.ecn_ct_active .footer-category {
+.ecn_ct_active .footer-type {
   background: #f7941d !important;
 }
 

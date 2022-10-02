@@ -1,36 +1,41 @@
 <div id="app">
-    <!-- TABS -->
-    <div class="row ecn_content_types" style="padding-right: 15%; padding-left: 15%">
-        <div v-for="type in types" class="col-md-4" style="text-align:center;">
-            <div :class=" type.active ? 'ecn_ct_active': 'ecn_ct_inactive'" v-on:click="selectType(type)">
-                <div class="icon-category">
-                    <img :src="type.icon" alt="">
-                </div>
-                <div class="ecn_description">
-                    Búsqueda por <strong>{{type.title}}</strong> de cada experiencia
-                </div>
-                <div class="footer-category">
-                    <img :src="defaultIcons.type" alt=""> {{type.title}}
+    <div class="container">
+        <!-- TABS -->
+        <div v-if="types && types.length > 0" class="row ecn_content_types"
+            style="padding-right: 10%; padding-left: 10%">
+            <div v-for="type in types" class="col-md-4" style="text-align:center;">
+                <div class="content-type h-100" :class="[type.active ? 'ecn_ct_active': 'ecn_ct_inactive']"
+                    v-on:click="selectType(type)">
+                    <div class="icon-type">
+                        <img :src=" type.active ?  type.activeIcon : type.inactiveIcon" alt="">
+                    </div>
+                    <div class="description-type">
+                        Búsqueda por <strong>{{type.title}}</strong> de cada experiencia
+                    </div>
+                    <div class="footer-type">
+                        <img :src="type.active ? defaultIcons.typeActive : defaultIcons.type" alt=""> {{type.title}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- TABS -->
+        <!-- TABS -->
 
+        <!-- STATIC SECTION -->
+        <div v-if="!typeActive" class="row ecn_experiences">
+            <div class="col-md-12 enc_exp_title">
+                <img :src="defaultIcons.left" alt=""> Experiencias <img :src="defaultIcons.right" alt="">
+            </div>
 
-    <!-- STATIC SECTION -->
-    <div v-if="!typeActive" class="row ecn_experiences">
-        <div class="col-md-12 enc_exp_title">
-            <img :src="defaultIcons.left" alt=""> Experiencias <img :src="defaultIcons.right" alt="">
+            <div class="col-md-12 enc_exp_text">
+                Recuerde que puede AportAR a este repositorio con sus propias experiencias. Si considera que tiene una
+                experiencia sistematizada o por sistematizar,  ingrese aquí al formulario para AportAR con su
+                Experiencia.
+            </div>
         </div>
+        <!-- STATIC SECTION -->
 
-        <div class="col-md-12 enc_exp_text">
-            Recuerde que puede AportAR a este repositorio con sus propias experiencias. Si considera que tiene una
-            experiencia sistematizada o por sistematizar,  ingrese aquí al formulario para AportAR con su
-            Experiencia.
-        </div>
     </div>
-    <!-- STATIC SECTION -->
+
 
     <!-- FILTERS -->
     <div v-if="typeActive && typeActive.id == 1" class="row g-0 ecn_content_filters">

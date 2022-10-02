@@ -4,16 +4,13 @@ const app = createApp({
   data() {
     return {
       defaultIcons: {
-        type: moduleUrl + "/img/type.png",
+        type: moduleUrl + "/img/deafult-type.png",
+        typeActive: moduleUrl + "/img/deafult-type-active.png",
         right: moduleUrl + "/img/tright.png",
         left: moduleUrl + "/img/tleft.png",
         defaultCard: moduleUrl + "/img/default-card.jpg",
       },
-      types: [
-        { id: 1, title: "Área temática", icon: moduleUrl + "/img/tematica.png", active: 0 },
-        { id: 2, title: "Problemas", icon: moduleUrl + "/img/problemas.png", active: 0 },
-        { id: 3, title: "Acceso geográfico", icon: moduleUrl + "/img/maps.png", active: 0 },
-      ],
+      types: [],
       typeActive: null,
       categories: [],
       countriesFilter: [],
@@ -35,6 +32,15 @@ const app = createApp({
           type.active = 0;
         }
       }
+    },
+    async getTypes() {
+      this.types = await this.getRequest("get_enc_types");
+      this.types = this.types.map((type) => {
+        type.inactiveIcon = moduleUrl + type.inactiveIcon;
+        type.activeIcon = moduleUrl + type.activeIcon;
+        type.hover = false;
+        return type;
+      });
     },
     async getCategoriesFilter() {
       this.categoriesFilter = await this.getRequest("get_enc_filter_categories");
@@ -164,6 +170,7 @@ const app = createApp({
     },
   },
   mounted() {
+    this.getTypes();
     this.getCountries();
     this.getCategories();
     this.getCategoriesFilter();

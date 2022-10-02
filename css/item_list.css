@@ -69,7 +69,6 @@
 
 /* FILTERS */
 .ecn_content_filters {
-  background: #ffefdc;
   padding: 3% 5% 3% 5%;
 }
 .ecn_category_header {
@@ -106,8 +105,8 @@
 }
 
 /* CARDS */
-.ecn_content_cards {
-  padding: 2% 10% 5% 10%;
+.ecn_content_results {
+  padding: 2% 5% 5% 5%;
 }
 
 .ecn_card_img {

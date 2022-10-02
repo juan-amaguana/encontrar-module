@@ -41,16 +41,12 @@ var itemId = 1;
 
         <!-- RESUMEN STATIC -->
         <div class="row problems-part">
-            <div class="col-md-6">
-                <div class="p-3 problem-1">
-                    <strong>Problema:</strong><br><br>
-                    Pérdida de la agrobiodiversidad
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="p-3 problem-2">
-                    <strong>Problemas específicos:</strong><br><br>
-                    No aplica
+            <div v-for="category in detail.categories">
+                <div class="col-md-6" v-if="validateCategories(category.category.parent.id,1)">
+                    <div class="p-3 problem-1">
+                        <strong>{{category.category.parent.name}}</strong><br><br>
+                        {{category.category.name}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,7 +75,8 @@ var itemId = 1;
                     <img src="<?= $urlModule."img/default-detail.jpg" ?>" />
                     <ul class="list-group text-end ecn_list_categories">
                         <div v-for="category in detail.categories">
-                            <li v-if="category.category.parent.name !== 'País'" class="list-group-item pt-3 pb-3">
+                            <li v-if="validateCategories(category.category.parent.id,2)"
+                                class="list-group-item pt-3 pb-3">
                                 <strong v-if="category.category.name">{{category.category.parent.name}}</strong>
                                 <br>{{category.category.name}}
                             </li>

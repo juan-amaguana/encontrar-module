@@ -30,6 +30,15 @@ const app = createApp({
         };
       }
     },
+    validateCategories(categoryId, section) {
+      if (section == 1) {
+        const categoryIds = [39, 40];
+        return categoryIds.find((id) => id === categoryId);
+      } else {
+        const categoryIds = [1, 5, 25, 33];
+        return categoryIds.find((id) => id === categoryId);
+      }
+    },
   },
   mounted() {
     this.itemById(itemId);

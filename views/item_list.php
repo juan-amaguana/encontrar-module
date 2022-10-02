@@ -39,7 +39,7 @@
 
     <!-- FILTERS -->
     <div class="container-fluid" style="background: #ffefdc;">
-        <div v-if="typeActive && typeActive.id == 1" class="row g-0 ecn_content_filters">
+        <div v-if="categories.length > 0 && typeActive && typeActive.id !== 3" class="row g-0 ecn_content_filters">
             <div v-for="category in categories" class="col-md">
                 <div class="ecn_category_header p-3" :style="{background: category.color}">
                     {{ category.name}}
@@ -84,30 +84,19 @@
                 </button>
             </div>
         </div>
+
+        <div v-if="typeActive && typeActive.id == 3" class="row g-0 ecn_content_filters">
+            <div class="col-md-12">
+                Filtro no disponible
+            </div>
+        </div>
     </div>
     <!-- END FILTERS -->
 
     <div class="container-fluid">
-        <!-- OTHER RESULTS -->
-        <div v-if="typeActive && typeActive.id == 2" class="row ecn_content_results">
-            <div class="row">
-                <div class="col-md">
-                    No disponible
-                </div>
-            </div>
-        </div>
 
-        <div v-if="typeActive && typeActive.id == 3" class="row ecn_content_results">
-            <div class="row">
-                <div class="col-md">
-                    No disponible
-                </div>
-            </div>
-        </div>
-
-
-        <!-- RESULT FILTERS  -->
-        <div v-if="items && items.length > 0" class="row ecn_content_results" data-masonry='{"percentPosition": true }'>
+        <div v-if="items && items.length > 0 && typeActive.id !== 3" class="row ecn_content_results"
+            data-masonry='{"percentPosition": true }'>
             <transition-group name="slide-fade" appear>
 
                 <div v-for="item in items" class="col-md-3">
@@ -139,6 +128,16 @@
 
             </transition-group>
         </div>
+
+        <!-- OTHER RESULTS -->
+        <div v-if="typeActive && typeActive.id == 3" class="row ecn_content_results">
+            <div class="row">
+                <div class="col-md">
+                    No disponible
+                </div>
+            </div>
+        </div>
+        <!-- RESULT FILTERS  -->
     </div>
 </div>
 

@@ -32,6 +32,7 @@ const app = createApp({
           type.active = 0;
         }
       }
+      this.getCategories(typeSelected.id);
     },
     async getTypes() {
       this.types = await this.getRequest("get_enc_types");
@@ -59,8 +60,8 @@ const app = createApp({
         this.countriesFilter.children.push(country);
       }
     },
-    async getCategories() {
-      this.categories = await this.getRequest("get_enc_categories");
+    async getCategories(typeId) {
+      this.categories = await this.getRequest("get_enc_categories?type=" + typeId);
       // this.categories.unshift(this.countriesFilter);
       // add checked status
       for (const category of this.categories) {
@@ -172,7 +173,7 @@ const app = createApp({
   mounted() {
     this.getTypes();
     this.getCountries();
-    this.getCategories();
+    // this.getCategories();
     this.getCategoriesFilter();
     this.getItems();
   },

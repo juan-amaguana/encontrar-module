@@ -16,6 +16,7 @@ const app = createApp({
       countriesFilter: [],
       categoriesFilter: [],
       items: [],
+      resultText: "",
       formFilter: {
         country_ids: [],
         category_ids: [],
@@ -92,6 +93,16 @@ const app = createApp({
       this.items = result.items;
       // Validate categories
       await this.validateExistence(result.validCategoryIds);
+      this.getResultText();
+    },
+    getResultText() {
+      if (this.items && this.items.length) {
+        if (this.items.length === 1) {
+          this.resultText = "SE ENCONTRÓ " + this.items.length + " RESULTADO";
+        } else {
+          this.resultText = "SE ENCONTRARON " + this.items.length + " RESULTADOS";
+        }
+      }
     },
     async filterItems(event, children, isCountry) {
       if (isCountry) {

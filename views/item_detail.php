@@ -59,8 +59,8 @@ var itemId = 1;
                     <img src="<?= $urlModule."img/default-detail.jpg" ?>" />
                     <ul class="list-group text-end ecn_list_categories">
                         <li v-for="category in detail.categories" class="list-group-item pt-3 pb-3">
-                            {{category.category.name}}
-                            <strong v-if="category.category.description"> <br>{{category.category.description}}</strong>
+                            <strong v-if="category.category.name">{{category.category.parent.name}}</strong>
+                            <br>{{category.category.name}}
                         </li>
                     </ul>
                 </div>
@@ -88,15 +88,15 @@ var itemId = 1;
                     </div>
                 </div>
 
-                <div v-if="det.items && det.items.sub_items && det.items.sub_items.length > 0" class="row mt-4">
-                    <div v-for="subItem in det.items.sub_items" class="mt-2 mb-2"
+                <div v-if="det.items && det.items.sub_items && det.items.sub_items.length > 0" class="row mt-1">
+                    <div v-for="subItem in det.items.sub_items" class="mt-1 mb-2"
                         :class="subItem.item_size ? subItem.item_size : 'col-md-12'">
-                        <div v-if="subItem.title && subItem.title!== ''" class="ecn_list_items_title mb-3">
+                        <div class="ecn_list_items_title mb-3" style="height: 10px;">
                             {{ subItem.title }}
                         </div>
                         <div v-if="subItem.description && subItem.description!= ''"
                             :style="{'border-color': det.items.color ? det.items.color : '#F7941D' }"
-                            v-html="subItem.description" class="p-3 ecn_list_items ">
+                            v-html="subItem.description" class="h-100 p-3 d-flex aligns-items-center ecn_list_items ">
                         </div>
                     </div>
                 </div>

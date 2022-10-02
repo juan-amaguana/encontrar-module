@@ -132,7 +132,10 @@ class Controller
     function getItemById($request){
         $item = MItem::where('id', $request["itemId"])
         ->with(array('categories' => function ($query) {
-            $query->with('category');
+            //$query->with('category');
+            $query->with(array('category' => function ($query) {
+                $query->with('parent');
+            }));
         }))
         ->with('country')
         ->with(array('details' => function ($query) {

@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.ecn_ct_inactive .triangle-down {
+  display: none;
+}
+
 .ecn_ct_active {
   border-color: #f7941d;
 }
@@ -169,6 +173,17 @@
   background: #fcfcfc;
   text-align: right;
 }
+.enc-title-result {
+  margin-top: 3%;
+}
+.enc-title-result h3 {
+  font-size: 38px;
+  color: #c1502a;
+}
+.enc-title-result p {
+  color: #777777;
+  font-size: 14px;
+}
 /*
   Enter and leave animations can use different
   durations and timing functions.
@@ -185,4 +200,14 @@
 .slide-fade-leave-to {
   transform: translateX(20px);
   opacity: 0;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 25px solid #f7941d;
+  position: absolute;
+  margin-left: 15px;
 }

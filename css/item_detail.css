@@ -24,8 +24,12 @@
   color: #fff;
   font-size: 30px;
 }
+.ecn_collapse_body {
+  margin-bottom: 5%;
+}
 .ecn_collapse_body h1 {
   font-size: 35px;
+  color: #063b50;
 }
 .ecn_list_categories li {
   border-right: 10px solid #fb835b;
@@ -47,4 +51,12 @@
   border-left: 10px solid;
   background-color: #eff6f8;
   font-size: 15px;
+}
+
+.ecn_list_items_title {
+  color: #6a6d75;
+  font-size: 25px;
+}
+.ecn_list_items img {
+  margin-right: 15px;
 }

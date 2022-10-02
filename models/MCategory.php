@@ -14,4 +14,9 @@ class MCategory extends Model
     {
         return $this->hasMany('Microweber\Encontrar\Models\MCategory', 'parent');
     }
+
+    public function parent()
+    {
+        return $this->belongsTo('Microweber\Encontrar\Models\MCategory', 'parent');
+    }
 }

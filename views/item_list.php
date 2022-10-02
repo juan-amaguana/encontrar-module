@@ -15,6 +15,8 @@
                     <div class="footer-type">
                         <img :src="type.active ? defaultIcons.typeActive : defaultIcons.type" alt=""> {{type.title}}
                     </div>
+                    <div class="triangle-down">
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,6 +96,14 @@
     <!-- END FILTERS -->
 
     <div class="container-fluid">
+
+
+        <div v-if="typeActive" class="row enc-title-result">
+            <div class="col-md-12 text-center">
+                <h3>EXPERIENCIAS</h3>
+                <p>{{resultText}} </p>
+            </div>
+        </div>
 
         <div v-if="items && items.length > 0" class="row ecn_content_results" data-masonry='{"percentPosition": true }'>
             <transition-group name="slide-fade" appear>

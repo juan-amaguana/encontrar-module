@@ -38,6 +38,26 @@ var itemId = 1;
 
 
     <div class="container p-3">
+
+        <!-- RESUMEN STATIC -->
+        <div class="row problems-part">
+            <div class="col-md-6">
+                <div class="p-3 problem-1">
+                    <strong>Problema:</strong><br><br>
+                    Pérdida de la agrobiodiversidad
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-3 problem-2">
+                    <strong>Problemas específicos:</strong><br><br>
+                    No aplica
+                </div>
+            </div>
+        </div>
+        <!-- RESUMEN STATIC -->
+
+
+
         <!-- RESUMEN STATIC -->
         <div class="row gx-0 ecn_collapse_head" style="background: peru;">
             <div class="col-md-6 ps-3 pe-3 pt-2 pb-2">
@@ -58,10 +78,12 @@ var itemId = 1;
                 <div class="col-md-6">
                     <img src="<?= $urlModule."img/default-detail.jpg" ?>" />
                     <ul class="list-group text-end ecn_list_categories">
-                        <li v-for="category in detail.categories" class="list-group-item pt-3 pb-3">
-                            <strong v-if="category.category.name">{{category.category.parent.name}}</strong>
-                            <br>{{category.category.name}}
-                        </li>
+                        <div v-for="category in detail.categories">
+                            <li v-if="category.category.parent.name !== 'País'" class="list-group-item pt-3 pb-3">
+                                <strong v-if="category.category.name">{{category.category.parent.name}}</strong>
+                                <br>{{category.category.name}}
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>

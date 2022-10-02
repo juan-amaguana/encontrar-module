@@ -15,6 +15,18 @@
 .enc-detail-top .ecn-views img {
   padding: 0px 10px 0px 10px;
 }
+/*static*/
+.problems-part {
+  margin-bottom: 2%;
+}
+.problems-part .problem-1 {
+  border-left: 10px solid #bec231;
+  background: #eff6f8;
+}
+.problems-part .problem-2 {
+  border-left: 10px solid #00bfe3;
+  background: #eff6f8;
+}
 /* COLAPSE OPTIONS */
 .ecn_collapse_head p {
   color: #fff;

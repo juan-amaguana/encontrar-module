@@ -112,10 +112,14 @@
 .ecn_card_img {
   position: relative;
 }
+.ecn_card_img img {
+  height: 270px;
+  max-height: 270px;
+}
 
 .ecn_card_img div {
   position: absolute;
-  background-color: #c1502ac9;
+  background-color: #063b5082;
   color: #fff;
   width: 100%;
   padding-left: 10px;
@@ -130,6 +134,14 @@
 .ecn_card {
   margin-bottom: 5%;
   margin-top: 5%;
+}
+.ecn_card:hover {
+  box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.36);
+  -webkit-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.36);
+  -moz-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.36);
+}
+.ecn_card:hover .ecn_card_img div {
+  background-color: #c1502ac9;
 }
 
 .ecn_card_title {

@@ -95,14 +95,13 @@
 
     <div class="container-fluid">
 
-        <div v-if="items && items.length > 0 && typeActive.id !== 3" class="row ecn_content_results"
-            data-masonry='{"percentPosition": true }'>
+        <div v-if="items && items.length > 0" class="row ecn_content_results" data-masonry='{"percentPosition": true }'>
             <transition-group name="slide-fade" appear>
 
                 <div v-for="item in items" class="col-md-3">
                     <div class="card ecn_card animate__animated animate__fadeInUp">
                         <div class="ecn_card_img">
-                            <img :src="defaultIcons.defaultCard" alt="">
+                            <img :src="item.feature_image" alt="">
                             <div>
                                 {{item.country.name}}
                             </div>

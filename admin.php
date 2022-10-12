@@ -43,5 +43,5 @@ var apiUrl = "<?php print api_url(); ?>";
 </div>
 
 
-
+<link rel="stylesheet" href="<?php print $config['url_to_module']; ?>/css/admin.css">
 <script type="module" src="<?php print $config['url_to_module']; ?>/js/script.js"></script>

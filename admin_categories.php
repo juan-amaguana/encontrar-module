@@ -8,19 +8,16 @@
 <br>
 <div class="accordion" id="accordionExample">
     <div class="accordion-item" v-if="categories.length > 0" v-for="category in categories">
-
-        <div class="row accordion-header" :id="'heading'+ category.id">
-
-            <div class="col-md-6">
-                <h3>{{category.name}}</h3>
+        <div class="content-buttons">
+            <button class="accordion-button collapsed" style="background-color: #fff;" type="button"
+                data-bs-toggle="collapse" :data-bs-target="'#collapse'+ category.id" aria-expanded="true"
+                :aria-controls="'collapse'+ category.id">
+                {{category.name}}
+            </button>
+            <div class="position-absolute top-50 translate-middle main-actions">
+                <a v-on:click="editCategory(children)" class="btn btn-outline-success btn-sm me-1">Editar</a>
+                <a class="btn btn-outline-danger btn-sm me-1">Eliminar</a>
             </div>
-            <div class="col-md-6">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    :data-bs-target="'#collapse'+ category.id" aria-expanded="true"
-                    :aria-controls="'collapse'+ category.id">
-                </button>
-            </div>
-
         </div>
 
         <div :id="'collapse'+ category.id" class="accordion-collapse collapse" :aria-labelledby="'heading'+ category.id"
@@ -44,8 +41,9 @@
                             <td> {{category.name}}</td>
                             <td>{{children.position}}</td>
                             <td>
-                                <span class="badge bg-primary" v-on:click="editCategory(children)">Editar</span>
-                                <span class="badge bg-danger">Eliminar</span>
+                                <a v-on:click="editCategory(children)"
+                                    class="btn btn-outline-success btn-sm me-1">Editar</a>
+                                <a class="btn btn-outline-danger btn-sm me-1">Eliminar</a>
                             </td>
                         </tr>
                     </tbody>

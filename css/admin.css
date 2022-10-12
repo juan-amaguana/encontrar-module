@@ -1,0 +1,13 @@
+/**
+CATEGORIES
+**/
+.content-buttons {
+  position: relative;
+}
+.main-actions {
+  z-index: 999;
+  right: 0;
+}
+/**
+END CATEGORIES
+**/

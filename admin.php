@@ -9,19 +9,20 @@ var apiUrl = "<?php print api_url(); ?>";
             <i class="mdi mdi-fruit-cherries text-primary mr-3"></i><strong>Admin Encontrar</strong>
         </h5>
     </div>
-    <div class="card-body pt-3" id="app">
+    <div class="card-body pt-3" id="">
         @verbatim
         <div class="mw-packages-browser-nav-tabs-nav">
             <div class="row">
                 <div class="col-12">
                     <nav class="nav nav-pills nav-justified btn-group btn-group-toggle btn-hover-style-3">
                         <a class="btn btn-outline-secondary justify-content-center active" data-bs-toggle="tab"
-                            id="js-packages-tab-template" href="#template"><i class="mdi mr-1 mdi-pencil-ruler"></i>
+                            id="js-packages-tab-template" href="#adminCategories"><i
+                                class="mdi mr-1 mdi-pencil-ruler"></i>
                             Categorias
                         </a>
                         <a class="btn btn-outline-secondary justify-content-center" data-bs-toggle="tab"
-                            id="js-packages-tab-module" href="#module"><i class="mdi mr-1 mdi-view-grid-plus"></i>
-                            Module
+                            id="js-packages-tab-module" href="#adminItems"><i class="mdi mr-1 mdi-view-grid-plus"></i>
+                            Items
                         </a>
                         <a class="btn btn-outline-secondary justify-content-center" data-bs-toggle="tab"
                             href="#template-updates">Template Updates&nbsp; <sup
@@ -29,10 +30,12 @@ var apiUrl = "<?php print api_url(); ?>";
                         </a>
                     </nav>
                     <div class="tab-content py-3">
-                        <div class="tab-pane fade active show" id="template">
+                        <div class="tab-pane fade active show" id="adminCategories">
                             <?php include_once($config['path_to_module'].'admin_categories.php'); ?>
                         </div>
-                        <div class="tab-pane fade" id="module">2</div>
+                        <div class="tab-pane fade" id="adminItems">
+                            <?php include_once($config['path_to_module'].'admin_item.php'); ?>
+                        </div>
                         <div class="tab-pane fade" id="template-updates">3</div>
                     </div>
                 </div>
@@ -44,4 +47,5 @@ var apiUrl = "<?php print api_url(); ?>";
 
 
 <link rel="stylesheet" href="<?php print $config['url_to_module']; ?>/css/admin.css">
-<script type="module" src="<?php print $config['url_to_module']; ?>/js/script.js"></script>
+<script type="module" src="<?php print $config['url_to_module']; ?>/js/admin_categories.js"></script>
+<script type="module" src="<?php print $config['url_to_module']; ?>/js/admin_items.js"></script>

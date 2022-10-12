@@ -147,6 +147,32 @@ class Controller
         return  $result;
     }
 
+    function listItems($request){
+   
+        $items = MItem::whereHas('categories', function (Builder $query) use ($request){
+            if (isset($request["category_ids"])){
+                $query->whereIn("category_id", $request["category_ids"]);
+            }
+            $query->whereHas('category', function (Builder $query2) {
+                // $query2->where('status', 1);
+            });
+        })
+        ->with(array('categories' => function ($query) {
+            $query->with('category');
+        }))
+        ->with('country');
+
+        if (isset($request["country_ids"])){
+            $items->whereIn("country_id", $request["country_ids"]);
+        }
+
+        $result = [
+            "success" => $items->paginate(10)
+        ];
+
+        return  $result;
+    }
+
     function getItemById($request){
         $item = MItem::where('id', $request["itemId"])
         ->with(array('categories' => function ($query) {

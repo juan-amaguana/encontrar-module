@@ -166,11 +166,7 @@ class Controller
             $items->whereIn("country_id", $request["country_ids"]);
         }
 
-        $result = [
-            "success" => $items->paginate(10)
-        ];
-
-        return  $result;
+        return  $items->paginate(2);
     }
 
     function getItemById($request){

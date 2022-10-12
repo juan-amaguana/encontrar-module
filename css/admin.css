@@ -11,3 +11,10 @@ CATEGORIES
 /**
 END CATEGORIES
 **/
+
+.item-title {
+  font-size: 12px;
+}
+.item-categories {
+  font-size: 9px;
+}

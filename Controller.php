@@ -24,7 +24,7 @@ class Controller
      */
     function getTypes(){
         $types = [
-            // [ "id" => 0, "title" =>  "Global", "inactiveIcon" =>  "", "activeIcon" =>  "" ],
+            [ "id" => 0, "title" =>  "Global", "inactiveIcon" =>  "", "activeIcon" =>  "" ],
             [ "id" => 1, "title" =>  "Área temática", "inactiveIcon" =>  "/img/icon-area.png", "activeIcon" =>  "/img/icon-area-active.png" ],
             [ "id" => 2, "title" =>  "Problemas", "inactiveIcon" =>  "/img/icon-problems.png", "activeIcon" =>  "/img/icon-problems-active.png" ],
             [ "id" => 3, "title" =>  "Acceso geográfico", "inactiveIcon" =>  "/img/icon-access.png", "activeIcon" =>  "/img/icon-access-active.png" ],

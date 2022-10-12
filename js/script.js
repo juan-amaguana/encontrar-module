@@ -20,7 +20,14 @@ const app = createApp({
   methods: {
     async getTypes() {
       this.types = await this.getRequest("get_enc_types");
-      this.types.unshift({ id: 0, title: "Selecciona el tipo" });
+      // this.types.unshift({ id: "", title: "Selecciona el tipo" });
+    },
+    getTypeTxt(id) {
+      const foundType = this.types.find((type) => type.id == id);
+      if (foundType) {
+        return foundType.title;
+      }
+      return "not found";
     },
     getCategories() {
       var self = this;

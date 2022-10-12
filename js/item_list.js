@@ -37,6 +37,7 @@ const app = createApp({
     },
     async getTypes() {
       this.types = await this.getRequest("get_enc_types");
+      this.types = this.types.filter((data) => data.id != 0); // type global remove
       this.types = this.types.map((type) => {
         type.inactiveIcon = moduleUrl + type.inactiveIcon;
         type.activeIcon = moduleUrl + type.activeIcon;

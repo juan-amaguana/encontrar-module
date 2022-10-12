@@ -12,7 +12,7 @@
             <button class="accordion-button collapsed" style="background-color: #fff;" type="button"
                 data-bs-toggle="collapse" :data-bs-target="'#collapse'+ category.id" aria-expanded="true"
                 :aria-controls="'collapse'+ category.id">
-                {{category.name}}
+                {{category.position}} - {{category.name}} ({{ getTypeTxt(category.type) }})
             </button>
             <div class="position-absolute top-50 translate-middle main-actions">
                 <a v-on:click="editCategory(children)" class="btn btn-outline-success btn-sm me-1">Editar</a>

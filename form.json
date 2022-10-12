@@ -1,0 +1,41 @@
+[
+  {
+    "header": "RESUMEN",
+    "description": "",
+    "color": "#333E58",
+    "sub_items": [
+      {
+        "title": "",
+        "viewcard": 0,
+        "item_size": "col-md-6",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "header": "INDICADORES GLOBALES",
+    "description": "",
+    "color": "#333E58",
+    "sub_items": [
+      {
+        "title": "",
+        "viewcard": 0,
+        "item_size": "col-md-6",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "header": "CONTEXTO GEOGRÁFICO",
+    "description": "",
+    "color": "#333E58",
+    "sub_items": [
+      {
+        "title": "",
+        "viewcard": 0,
+        "item_size": "col-md-6",
+        "content": ""
+      }
+    ]
+  }
+]

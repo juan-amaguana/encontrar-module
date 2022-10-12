@@ -3,11 +3,7 @@ import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 const app = createApp({
   data() {
     return {
-      types: [
-        { id: 0, title: "Selecciona el tipo" },
-        { id: 1, title: "Area tematica" },
-        { id: 2, title: "Problemas" },
-      ],
+      types: [],
       categories: [],
       currentCategory: {},
       modalOptions: {
@@ -22,9 +18,12 @@ const app = createApp({
     };
   },
   methods: {
+    async getTypes() {
+      this.types = await this.getRequest("get_enc_types");
+      this.types.unshift({ id: 0, title: "Selecciona el tipo" });
+    },
     getCategories() {
       var self = this;
-
       const url = apiUrl + "get_enc_categories";
       var get = $.get(url);
       get.done(function (data) {
@@ -86,8 +85,23 @@ const app = createApp({
       this.position = null;
       this.type = 0;
     },
+    async getRequest(method) {
+      try {
+        const url = apiUrl + method;
+        var get = $.get(url);
+        const result = await get.done(function (data) {
+          console.log(`Result ${method}:`, data);
+        });
+        return result;
+      } catch (error) {
+        return {
+          error: err.message,
+        };
+      }
+    },
   },
   mounted() {
+    this.getTypes();
     this.getCategories();
   },
 });

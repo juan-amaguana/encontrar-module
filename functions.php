@@ -31,6 +31,13 @@ function save_enc_categories($params=array())
     return response()->json($controller->saveParentCategory($params));
 }
 
+api_expose('update_enc_categories');
+function update_enc_categories($params=array())
+{
+    $controller = new Microweber\Encontrar\Controller();
+    return response()->json($controller->updateParentCategory($params));
+}
+
 /**
  * COUNTRIES
  */

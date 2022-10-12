@@ -53,11 +53,29 @@ class Controller
         try {
             $categoria = new MCategory();
             $categoria->name = $request["name"];
-            $categoria->parent = isset($request["parent"]) ? $request["parent"]: null;
+            $categoria->parent = isset($request["parent"]) && $request["parent"] !== "" ? $request["parent"]: null;
             $categoria->type = $request["type"];
+            $categoria->color = $request["color"];
             $categoria->position = $request["position"];
             $categoria->status = 1;
             $categoria->save();
+            return $categoria;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function updateParentCategory($request)
+    {
+        try {
+            // $categoria = new MCategory();
+            $categoria = MCategory::findOrFail($request["id"]);
+            $categoria->name = $request["name"];
+            $categoria->type = $request["type"];
+            $categoria->color = $request["color"];
+            $categoria->position = $request["position"];
+            $categoria->status = 1;
+            $categoria->update();
             return $categoria;
         } catch (\Exception $e) {
             return $e->getMessage();

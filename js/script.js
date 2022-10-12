@@ -9,12 +9,17 @@ const app = createApp({
       modalOptions: {
         title: "",
         error: "",
+        action: "save", // save, update, delete
       },
       // form items
-      parent: null,
-      type: 0, // defaul
-      title: null,
-      position: null,
+      category: {
+        id: null,
+        name: null,
+        color: null,
+        parent: null,
+        type: 0, //default
+        position: null,
+      },
     };
   },
   methods: {
@@ -39,40 +44,33 @@ const app = createApp({
       });
     },
     addCategory() {
-      this.parent = null;
       this.modalOptions.title = "Crear categoria padre";
+      this.clearForm();
       var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
       myModal.show();
     },
     addSubCategory(parentCategory) {
+      this.clearForm();
       this.modalOptions.title = "Crear categoria hija";
-      this.type = parentCategory.type;
-      this.parent = parentCategory.id;
+      this.category.type = parentCategory.type;
+      this.category.parent = parentCategory.id;
 
       var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
       myModal.show();
     },
     saveCategory() {
       this.modalOptions.error = "";
-      if (!this.title || !this.position || this.type === 0) {
+      if (!this.category.name || !this.category.position) {
         this.modalOptions.error = "Porfavor completa los campos requeridos";
+        return;
       }
 
       try {
         const url = apiUrl + "save_enc_categories";
-        const form = {};
-
-        if (this.parent) {
-          form.parent = this.parent;
-        }
-
-        form.name = this.title;
-        form.position = this.position;
-        form.type = this.type;
-
+        const form = JSON.parse(JSON.stringify(this.category));
+        console.log(form);
         var post = $.post(url, form);
         var self = this;
-
         post.done(function (data) {
           bootstrap.Modal.getOrCreateInstance(document.getElementById("exampleModal")).hide();
           self.getCategories();
@@ -82,15 +80,46 @@ const app = createApp({
         console.log("save category:", error);
       }
     },
-    editCategory(children) {
-      console.log(children);
+    editCategory(category) {
+      console.log(category);
+      this.category = category;
+      this.modalOptions.title = "Actualizar categoria";
+      this.modalOptions.action = "update";
       var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
       myModal.show();
     },
+    updateCategory() {
+      this.modalOptions.error = "";
+      if (!this.category.name || !this.category.position) {
+        this.modalOptions.error = "Porfavor completa los campos requeridos";
+        return;
+      }
+
+      try {
+        const url = apiUrl + "update_enc_categories";
+        const form = JSON.parse(JSON.stringify(this.category));
+        console.log(form);
+        var post = $.post(url, form);
+        var self = this;
+        post.done(function (data) {
+          bootstrap.Modal.getOrCreateInstance(document.getElementById("exampleModal")).hide();
+          self.getCategories();
+          self.clearForm();
+        });
+      } catch (error) {
+        console.log("update category:", error);
+      }
+    },
     clearForm() {
-      this.title = null;
-      this.position = null;
-      this.type = 0;
+      this.category = {
+        id: null,
+        name: null,
+        color: null,
+        parent: null,
+        type: 0, //default
+        position: null,
+      };
+      this.modalOptions.error = "";
     },
     async getRequest(method) {
       try {

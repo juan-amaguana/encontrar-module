@@ -15,7 +15,7 @@
                 {{category.position}} - {{category.name}} ({{ getTypeTxt(category.type) }})
             </button>
             <div class="position-absolute top-50 translate-middle main-actions">
-                <a v-on:click="editCategory(children)" class="btn btn-outline-success btn-sm me-1">Editar</a>
+                <a v-on:click="editCategory(category)" class="btn btn-outline-success btn-sm me-1">Editar</a>
                 <a class="btn btn-outline-danger btn-sm me-1">Eliminar</a>
             </div>
         </div>
@@ -68,23 +68,31 @@
             </div>
 
             <div class="modal-body">
-                <select v-if="!parent" v-model="type" class="form-select" aria-label="Default select example">
+                <select v-if="!category.parent" v-model="category.type" class="form-select"
+                    aria-label="Default select example">
                     <option v-for="type in types" :value="type.id">{{type.title}}</option>
                 </select>
-                <br>
-                <div class="input-group">
-                    <input v-model="title" type="text" class="form-control" placeholder="Nombre">
+
+                <div class="input-group pt-2">
+                    <input v-model="category.name" type="text" class="form-control" placeholder="Nombre">
                 </div>
-                <br>
-                <div class="input-group">
-                    <input v-model="position" type="number" class="form-control" placeholder="Posición">
+
+                <div class="input-group pt-2" v-if="!category.parent">
+                    <input v-model="category.color" type="text" class="form-control" placeholder="Color ej. #000">
                 </div>
-                <br>
+
+                <div class="input-group pt-2">
+                    <input v-model="category.position" type="number" class="form-control" placeholder="Posición">
+                </div>
+
                 <div style="color:red;text-align: center;">{{modalOptions.error}}</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button v-on:click="saveCategory()" type="button" class="btn btn-primary">Guardar</button>
+                <button v-if="modalOptions.action == 'save'" v-on:click="saveCategory()" type="button"
+                    class="btn btn-primary">Guardar</button>
+                <button v-if="modalOptions.action == 'update'" v-on:click="updateCategory()" type="button"
+                    class="btn btn-primary">Actualizar</button>
             </div>
 
         </div>

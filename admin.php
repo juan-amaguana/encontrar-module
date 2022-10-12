@@ -16,13 +16,13 @@ var apiUrl = "<?php print api_url(); ?>";
                 <div class="col-12">
                     <nav class="nav nav-pills nav-justified btn-group btn-group-toggle btn-hover-style-3">
                         <a class="btn btn-outline-secondary justify-content-center active" data-bs-toggle="tab"
+                            id="js-packages-tab-module" href="#adminItems"><i class="mdi mr-1 mdi-view-grid-plus"></i>
+                            Items
+                        </a>
+                        <a class="btn btn-outline-secondary justify-content-center" data-bs-toggle="tab"
                             id="js-packages-tab-template" href="#adminCategories"><i
                                 class="mdi mr-1 mdi-pencil-ruler"></i>
                             Categorias
-                        </a>
-                        <a class="btn btn-outline-secondary justify-content-center" data-bs-toggle="tab"
-                            id="js-packages-tab-module" href="#adminItems"><i class="mdi mr-1 mdi-view-grid-plus"></i>
-                            Items
                         </a>
                         <a class="btn btn-outline-secondary justify-content-center" data-bs-toggle="tab"
                             href="#template-updates">Template Updates&nbsp; <sup
@@ -30,11 +30,11 @@ var apiUrl = "<?php print api_url(); ?>";
                         </a>
                     </nav>
                     <div class="tab-content py-3">
-                        <div class="tab-pane fade active show" id="adminCategories">
-                            <?php include_once($config['path_to_module'].'admin_categories.php'); ?>
-                        </div>
-                        <div class="tab-pane fade" id="adminItems">
+                        <div class="tab-pane fade active show" id="adminItems">
                             <?php include_once($config['path_to_module'].'admin_item.php'); ?>
+                        </div>
+                        <div class="tab-pane fade" id="adminCategories">
+                            <?php include_once($config['path_to_module'].'admin_categories.php'); ?>
                         </div>
                         <div class="tab-pane fade" id="template-updates">3</div>
                     </div>

@@ -5,7 +5,7 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Title</th>
+                    <th scope="col">Titulo</th>
                     <th scope="col">Categorias</th>
                     <th scope="col">Estado</th>
                 </tr>
